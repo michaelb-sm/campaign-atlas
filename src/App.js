@@ -1,4 +1,6 @@
 import './App.css';
+import MapContainer from './components/MapContainer';
+import InfoContainer from './components/InfoContainer';
 
 function App() {
   return (
@@ -7,8 +9,8 @@ function App() {
         <h1>Welcome to Campaign Atlas</h1>
       </header>
       <div className="App-body">
-        <div className="info-container">Left</div>
-        <div className="map-container">Right</div>
+        <InfoContainer />
+        <MapContainer />
       </div>
     </div>
   );
