@@ -1,6 +1,4 @@
 .App {
-  background-color: #b3c2b5;
-  background-image: url("./images/black-scales.png");
   text-align: center;
   height: 100%;
   width: 100%;
@@ -37,13 +35,4 @@
 
 .App-body div {
   height: 100%;
-}
-
-.info-container {
-  background-color: white;
-  width: 30vw;
-}
-
-.map-container {
-  flex-grow: 1;
 }
