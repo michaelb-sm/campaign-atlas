@@ -1,7 +1,5 @@
 .info-container {
-    border-style: solid solid hidden hidden;
-    border-color: white;
-    background-color: #80b880;
-    flex-grow: 1;
     min-width: 30vw;
   }
+
+  
