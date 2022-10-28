@@ -1,0 +1,47 @@
+.searchInputs {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: left;
+}
+
+/* INPUT */
+
+.searchInputs input {
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 1rem;
+    padding: 0.5em;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* ICON */
+
+.searchIcon {
+    background-color: blue;
+    width: 2em;
+    height: auto;
+    min-height: 20px;
+
+    display: grid;
+    place-items: center;
+}
+
+.searchIcon svg {
+    font-size: 1rem;
+}
+
+/* FILTER */
+
+.filterFields {
+    background-color: red;
+    width: 6em;
+    height: auto;
+    min-height: 20px;
+    margin-left: 1em;
+}

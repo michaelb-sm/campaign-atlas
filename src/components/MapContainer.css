@@ -1,11 +1,8 @@
 .map-container {
-  
-  }
 
-  img {
-    /* margin: 2%; */
-    border-radius: 2%;
-    
-    max-height: 80%;
-    object-fit: contain;
-  }
+}
+
+.background-map {
+  border-radius: 20px;
+  width: 80%;
+}

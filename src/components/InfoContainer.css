@@ -1,5 +1,8 @@
 .info-container {
-    min-width: 30vw;
-  }
+  background-color: white;
+  border-radius: 20px;
+}
 
-  
+.info-container > * {
+  margin: auto;
+}
