@@ -2,7 +2,9 @@ import './InfoContainer.css';
 
 function InfoContainer() {
     return (
-        <div className='info-container'>Info</div>
+        <div className='info-container'>
+            <h1>Info</h1>
+        </div>
     );
 }
 
