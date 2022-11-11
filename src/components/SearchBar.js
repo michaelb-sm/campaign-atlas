@@ -1,14 +1,27 @@
 import './SearchBar.css';
+import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home"
 
 function SearchBar({placeholder, data}) {
     return (
         <div className='search'>
-            <div className='searchInputs'>
-                <input type="text" placeholder={placeholder}/>
-                <div className='searchIcon'></div>
-                <div className='filterFields'></div>
+            <div className='homeButton'>
+                <HomeIcon />
             </div>
-            <div className='searchCandidate'></div>
+            <div className='searchInputs'>
+                <div className='searchField'>
+                    <input type="text" placeholder={placeholder}/>
+                    <div className='searchButton'>
+                        <SearchIcon />
+                    </div>
+                </div>
+                <div className='searchCandidates'>
+                    {data.map((value, key) => {
+                        return <button className='searchItem'>{value.name}</button>
+                    })}
+                </div>
+            </div>
+            <div className='filterField'></div>
         </div>
     );
 }
