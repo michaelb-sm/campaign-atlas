@@ -1,6 +1,7 @@
 [
     {
         "name": "Ada Levesmere",
+        "type": "person",
         "infoLinks": {
             "allies": ["Ambriel", "Jappa", "Julie", "Devek", "Florence Amber", "Trehan Empire"],
             "enemies": ["The Conclave of Light"],
@@ -12,7 +13,7 @@
         "main": [
             {
                 "heading": "Description",
-                "body": "Ada Levesmere is a human woman in her mid-forties with long black hair and stern green eyes."
+                "body": "Ada Levesmere is a human woman in her mid-forties with long black hair and stern green eyes. She is a capable wizard, though most of her attention goes to politics and the running of Levenmere Hold"
             },
             {
                 "heading": "Family",
@@ -22,6 +23,7 @@
     },
     {
         "name": "Keldyn Do'Sek",
+        "type": "person",
         "infoLinks": {
             "allies": ["Esafell Or'Mazrik"],
             "enemies": ["The Conclave of Light"],
