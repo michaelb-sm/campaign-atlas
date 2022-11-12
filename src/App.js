@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
       
         <SearchBar placeholder={'Search'} data={PersonData}/>
-        <h1>Welcome to Campaign Atlas</h1>
+        <h1>The Campaign Atlas</h1>
         <div className='viewBar'>
 
         </div>
