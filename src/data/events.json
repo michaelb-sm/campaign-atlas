@@ -1,0 +1,38 @@
+[
+    {
+        "name": "The War of the Whitesong",
+        "type": "event",
+        "status": "Ended ~180 years ago",
+        "infoLinks": {
+            "people": ["Ander Levesmere", "Ehred Trehar"],
+            "factions": ["The Strangers"],
+            "places": ["Estrea", "The Trehan Empire", "Nentovarr", "Andesa", "Rochsholm", "Dartgrave Island", "Whitesong Sea"],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Overview",
+                "body": "The War of the Whitesong was a war fought over the attempted annexation of Dartgrave Island and the eastern coast of Estrea by the Trehan Empire. It was named for the extensive fighting done on the Whitesong Sea. It ended with the defeat of the Trehan Empire and the death of Ehred Trehar, and resulted in the island of Rochsholm being given to Estrea."
+            }
+        ]
+    },
+    {
+        "name": "Blindshore Haunting",
+        "type": "event",
+        "status": "Recently ended",
+        "infoLinks": {
+            "people": ["Keldyn Do'Sek", "Ambriel", "Jappa", "Julie"],
+            "factions": ["Bastion of the Stone Bear"],
+            "places": ["Blindshore"],
+            "items": ["Driftglobe"],
+            "other": ["Flying Heads", "Psychic Mist"]
+        },
+        "main": [
+            {
+                "heading": "Overview",
+                "body": "The Blindshore Haunting was a recent event that concerned the Blindshore mist causing visions in the dreams of its people. Some of the mist also became malignant and would set upon waking individuals to drain them of their life. Death by way of the mist or sleep resulted in the mutation of the bodies."
+            }
+        ]
+    }
+]

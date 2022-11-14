@@ -1,0 +1,44 @@
+[
+    {
+        "name": "The Conclave of Light",
+        "type": "faction",
+        "status": "Operating",
+        "infoLinks": {
+            "members": ["Bieran Deltryce", "Daefaren Deltryce"],
+            "enemies": ["Ambriel", "Jappa", "Julie"],
+            "people": ["Armand Amber"],
+            "places": ["Nentoris", "Ylsera", "Launeron"],
+            "events": [],
+            "other": ["Arandia"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "The Conclave of Light is an organization of elven figures operating in secret from within the elven domain of Ylsera."
+            }
+        ]
+    },
+    {
+        "name": "The Strangers",
+        "type": "faction",
+        "status": "Operating",
+        "infoLinks": {
+            "members": ["Sarai", "Shaxiul", "Veress"],
+            "enemies": ["The Conclave of Light"],
+            "people": ["Armand Amber"],
+            "places": ["Nen Thalas"],
+            "events": ["The War of the Whitesong"],
+            "other": ["The Trehan Empire"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "The Strangers are a group of professional thieves, assassins, and rogues who deal with many different covert operations."
+            },
+            {
+                "heading": "Disguises",
+                "body": "Many who join the ranks of the Strangers undergo 'indistinction', a process which involves the removal or concealing of distinguishing physical traits. The purpose of 'indistinction' is to rid oneself of traits that would be easy to spot in a crowd, or to make the application of disguises and makeup easier."
+            }
+        ]
+    }
+]

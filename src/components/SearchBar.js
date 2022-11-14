@@ -19,6 +19,8 @@ function SearchBar({placeholder, data}) {
 
     function handleUserInput(event) {
         const inputText = (event.target.value).toLowerCase();
+
+        // Filter data to display it as quick links under the search bar
         const inputFilter = data.filter( (value) => {
             return (value.name).toLowerCase().includes(inputText);
         });
@@ -33,10 +35,12 @@ function SearchBar({placeholder, data}) {
     return (
         <div className='search'>
 
+            {/* Home Button */}
             <button className='homeButton'>
                 <HomeIcon />
             </button>
 
+            {/* Search Filter Dropdown Menu */}
             <Dropdown as={ButtonGroup} onSelect={handleFilterChange}>
                 <Dropdown.Toggle split variant='rounded-light'/>
                 <div className={`filterField ${filterType === "Filter Search" ? "filterPlaceholder" : ""}`}> {filterType} </div>
@@ -53,6 +57,7 @@ function SearchBar({placeholder, data}) {
                 </Dropdown.Menu>
             </Dropdown>
 
+            {/* Searchbar */}
             <div className='searchInputs'>
                 <div className='searchField'>
                     <input type="text" placeholder={placeholder} onChange={handleUserInput} />
@@ -61,6 +66,7 @@ function SearchBar({placeholder, data}) {
                     </button>
                 </div>
 
+                {/* Display possible search results */}
                 {searchCandidates.length !== 0 && (
                     <div className='searchCandidates'>
                         {searchCandidates.slice(0, 15).map((value, key) => {
