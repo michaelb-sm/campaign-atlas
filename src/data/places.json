@@ -1,0 +1,36 @@
+[
+    {
+        "name": "The Trehan Empire",
+        "type": "place",
+        "status": "Nation",
+        "infoLinks": {
+            "people": ["Ada Levesmere", "Petrana Trehar", "Diaston Earthcaller", "Ambriel"],
+            "places": ["Levenmere Hold", "Ebonvale", "Nentovarr", "Iberandir"],
+            "events": ["The War of the Whitesong"],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "The Trehan Empire is a nation comprised mostly of humans which sits on the western half of the island of Nentovarr, in the Iberandir region."
+            }
+        ]
+    },
+    {
+        "name": "Blindshore",
+        "type": "place",
+        "status": "Town",
+        "infoLinks": {
+            "people": ["Keldyn Do'Sek"],
+            "places": ["Nentoris", "Nentovarr", "Matha"],
+            "events": ["Blindshore Haunting"],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Blindshore is a town located in western Nentoris near the Carigorn Escarpment and south of Matha. It is notable for the near-constant mist that shrouds the town and its coast, which is what gives it its name."
+            }
+        ]
+    }
+]

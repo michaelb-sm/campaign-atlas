@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Arandia",
+        "type": "entity",
+        "status": "Member of the Divine Protectorate",
+        "infoLinks": {
+            "factions": ["The Conclave of Light"],
+            "places": ["Ylsera", "Nentoris"],
+            "events": ["The Epoch of Corruption", "The Epoch of Fire", "The Epoch of Arcane Law"],
+            "items": [],
+            "entities": ["Arah'nular", "Zylena"],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Regarded as the matron and creator of the Elves, Arandia is the Goddess of Light and the daughter of Lanre, the Rising Sun, aspect of Arah'nular."
+            }
+        ]
+    },
+    {
+        "name": "Zylena",
+        "type": "entity",
+        "status": "Member of the Epochal Order",
+        "infoLinks": {
+            "factions": [],
+            "places": ["The Underdark"],
+            "events": ["The Epoch of Fire", "The Epoch of Arcane Law"],
+            "items": [],
+            "entities": ["Arah'nular", "Arandia", "Lolth"],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Zylena is the daughter of Uskular, the Setting Sun, aspect of Arah'nular. She is regarded as one of the first wielders of arcane magic. Though many believe she used to lead the Drow before the Epoch of Arcane Law, her influence hasn't been seen in centuries and some scholars believe her to be dead or lost."
+            }
+        ]
+    }
+]

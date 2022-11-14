@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Flying Heads",
+        "type": "creature",
+        "status": "Supposedly defeated",
+        "infoLinks": {
+            "people": ["Ambriel", "Jappa", "Julie", "Esafell Or'Mazrik"],
+            "places": ["Blindshore"],
+            "events": ["Blindshore Haunting"],
+            "items": [],
+            "other": ["Psychic Mist"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "These creatures were severed heads with wings made of torn cheek-skin. The heads themselves were originally attached to living creatures, and so come in a variety of looks and 'races'."
+            },
+            {
+                "heading": "Abilities",
+                "body": "The Flying Heads of Blindshore are created when someone dies in their sleep under the influence of the visions from the Psychic Mist. The visions they experience warp their minds until they wish to share their horrid knowledge with other creatures. "
+            }
+        ]
+    },
+    {
+        "name": "Psychic Mist",
+        "type": "creature",
+        "status": "Supposedly defeated",
+        "infoLinks": {
+            "people": ["Ambriel", "Jappa", "Julie", "Esafell Or'Mazrik"],
+            "places": ["Blindshore"],
+            "events": ["Blindshore Haunting"],
+            "items": [],
+            "other": ["Psychic Mist"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "The Psychic Mist is created from regular fog which has been warped and held together by intense arcane emotion. It appears as a pale cloud of fog with dilute tendrils of deep red and purple."
+            },
+            {
+                "heading": "Abilities",
+                "body": "Any creatures in relative proximity of a cloud of Psychic Mist will be bombarded with strange arcane power that can warp their minds and allow them to see visions. Most often these visions are carried by the Mist itself, although sometimes they are formed from errant thoughts of the creature whose consciousness is projected outwards by the power they have absorbed. Psychic mist can also attack creatures directly, seeking to steal their life force which can cause the formation of ghouls."
+            }
+        ]
+    }
+]
