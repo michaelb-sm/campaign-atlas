@@ -22,10 +22,10 @@
 /* BODY */
 
 .App-body {
-  padding: 1.5em 1em;
+  padding: 1em 1em;
   
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1em;
 }
 
