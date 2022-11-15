@@ -2,7 +2,7 @@
     {
         "name": "Arandia",
         "type": "entity",
-        "status": "Member of the Divine Protectorate",
+        "status": "God of the Divine Protectorate",
         "infoLinks": {
             "factions": ["The Conclave of Light"],
             "places": ["Ylsera", "Nentoris"],
@@ -21,7 +21,7 @@
     {
         "name": "Zylena",
         "type": "entity",
-        "status": "Member of the Epochal Order",
+        "status": "God of the Epochal Order",
         "infoLinks": {
             "factions": [],
             "places": ["The Underdark"],

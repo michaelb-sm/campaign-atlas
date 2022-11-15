@@ -1,0 +1,11 @@
+.dataCard {
+    display: grid;
+    grid-template-columns: minmax(0, 9fr) minmax(0, 1fr);
+    gap: 1em;
+}
+
+.data > *{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

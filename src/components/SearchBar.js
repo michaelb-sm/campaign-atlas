@@ -5,17 +5,8 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home"
 
-function SearchBar({placeholder, data}) {
-    const [filterType, setFilterType] = useState('Filter Search');
+function SearchBar({placeholder, filterType, onFilter, data}) {
     const [searchCandidates, setSearchCandidates] = useState([]);
-
-    function handleFilterChange(eventKey, event) {
-        if (eventKey === 'clear') {
-            setFilterType('Filter Search');
-        } else {
-            setFilterType(event.target.text);
-        }
-    }
 
     function handleUserInput(event) {
         const inputText = (event.target.value).toLowerCase();
@@ -41,19 +32,19 @@ function SearchBar({placeholder, data}) {
             </button>
 
             {/* Search Filter Dropdown Menu */}
-            <Dropdown as={ButtonGroup} onSelect={handleFilterChange}>
+            <Dropdown as={ButtonGroup} onSelect={(eventKey, event) => {onFilter(eventKey, event.target.text)}}>
                 <Dropdown.Toggle split variant='rounded-light'/>
-                <div className={`filterField ${filterType === "Filter Search" ? "filterPlaceholder" : ""}`}> {filterType} </div>
+                <div className={`filterField ${filterType.text === "Filter Search" ? "filterPlaceholder" : ""}`}> {filterType.text} </div>
                 <Dropdown.Menu variant='rounded-light'>
-                    <Dropdown.Item eventKey='clear'>Clear Filter</Dropdown.Item>
+                    <Dropdown.Item eventKey="clear">Clear Filter</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item eventKey='person'>Person</Dropdown.Item>
-                    <Dropdown.Item eventKey='faction'>Faction</Dropdown.Item>
-                    <Dropdown.Item eventKey='place'>Place/Location</Dropdown.Item>
-                    <Dropdown.Item eventKey='event'>Event</Dropdown.Item>
-                    <Dropdown.Item eventKey='thing'>Item/Material</Dropdown.Item>
-                    <Dropdown.Item eventKey='entity'>God/Entity</Dropdown.Item>
-                    <Dropdown.Item eventKey='creature'>Creature</Dropdown.Item>
+                    <Dropdown.Item eventKey="person">Person</Dropdown.Item>
+                    <Dropdown.Item eventKey="faction">Faction</Dropdown.Item>
+                    <Dropdown.Item eventKey="place">Place/Location</Dropdown.Item>
+                    <Dropdown.Item eventKey="event">Event</Dropdown.Item>
+                    <Dropdown.Item eventKey="thing">Item/Material</Dropdown.Item>
+                    <Dropdown.Item eventKey="entity">God/Entity</Dropdown.Item>
+                    <Dropdown.Item eventKey="creature">Creature</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
@@ -69,7 +60,7 @@ function SearchBar({placeholder, data}) {
                 {/* Display possible search results */}
                 {searchCandidates.length !== 0 && (
                     <div className='searchCandidates'>
-                        {searchCandidates.slice(0, 15).map((value, key) => {
+                        {searchCandidates.slice(0, 10).map((value, key) => {
                             return <button className='searchItem'>{value.name}</button>
                         })}
                     </div>
