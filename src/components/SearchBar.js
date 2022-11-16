@@ -5,11 +5,13 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home"
 
-function SearchBar({placeholder, filterType, onFilter, data}) {
+function SearchBar({infoControl, data, onHome, onFilter, onSearch}) {
+    const [searchText, setSearchText] = useState("");
     const [searchCandidates, setSearchCandidates] = useState([]);
 
     function handleUserInput(event) {
         const inputText = (event.target.value).toLowerCase();
+        setSearchText(inputText);
 
         // Filter data to display it as quick links under the search bar
         const inputFilter = data.filter( (value) => {
@@ -27,14 +29,14 @@ function SearchBar({placeholder, filterType, onFilter, data}) {
         <div className='search'>
 
             {/* Home Button */}
-            <button className='homeButton'>
+            <button className='homeButton' onClick={onHome}>
                 <HomeIcon />
             </button>
 
             {/* Search Filter Dropdown Menu */}
             <Dropdown as={ButtonGroup} onSelect={(eventKey, event) => {onFilter(eventKey, event.target.text)}}>
                 <Dropdown.Toggle split variant='rounded-light'/>
-                <div className={`filterField ${filterType.text === "Filter Search" ? "filterPlaceholder" : ""}`}> {filterType.text} </div>
+                <div className={`filterField ${infoControl.filterType === "clear" ? "filterPlaceholder" : ""}`}> {infoControl.filterText} </div>
                 <Dropdown.Menu variant='rounded-light'>
                     <Dropdown.Item eventKey="clear">Clear Filter</Dropdown.Item>
                     <Dropdown.Divider />
@@ -51,8 +53,15 @@ function SearchBar({placeholder, filterType, onFilter, data}) {
             {/* Searchbar */}
             <div className='searchInputs'>
                 <div className='searchField'>
-                    <input type="text" placeholder={placeholder} onChange={handleUserInput} />
-                    <button className='searchButton'>
+                    <input type="text" name="search" placeholder="Search" value={searchText} onChange={handleUserInput} />
+                    <button 
+                        className='searchButton' 
+                        onClick={() => {
+                            onSearch(searchText);
+                            setSearchText("");
+                            setSearchCandidates([]);
+                        }}
+                    >
                         <SearchIcon />
                     </button>
                 </div>
