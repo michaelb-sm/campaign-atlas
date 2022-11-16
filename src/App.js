@@ -13,59 +13,90 @@ import EntityData from './data/entities.json';
 import CreatureData from './data/creatures.json';
 
 function App() {
-  // const allData = PersonData.concat(FactionData).concat(PlaceData).concat(EventData).concat(ThingData).concat(EntityData).concat(CreatureData);
-  const allData = [...PersonData, ...FactionData, ...PlaceData, ...EventData, ...ThingData, ...EntityData, ...CreatureData]
-  allData.sort((a, b) => {
+    const allData = [...PersonData, ...FactionData, ...PlaceData, ...EventData, ...ThingData, ...EntityData, ...CreatureData]
+    allData.sort((a, b) => {
     let na = a.name.toLowerCase(),
         nb = b.name.toLowerCase();
-    
+
         return na.localeCompare(nb);
-  });
+    });
 
-  const [filterType, setfilterType] = useState({
-    type: "clear",
-    text: "Filter Search"
-  });
+    const [infoControl, setInfoControl] = useState({
+        display: "main",
+        search: "",
+        filterType: "clear",
+        filterText: "Filter Search"
+    })
 
-  function handleFilterChange(key, filterText) {
+    function handleHome() {
+        setInfoControl({
+            display: "main",
+            search: "",
+            filterType: "clear",
+            filterText: "Filter Search"
+        });
+    }
+
+    function handleFilterChange(key, filterText) {
         if (key === "clear") {
-            setfilterType({
-                type: "clear",
-                text: "Filter Search"
+            setInfoControl( (prevValue) => {
+                return {
+                    ...prevValue,
+                    filterType: key,
+                    filterText: "Filter Search"
+                };
             });
         } else {
-            setfilterType({
-                type: key,
-                text: filterText
+            setInfoControl( (prevValue) => {
+                return {
+                    ...prevValue,
+                    filterType: key,
+                    filterText: filterText
+                };
             });
         }
     }
 
-  return (
+    function handleSearch(search) {
+        setInfoControl( (prevValue) => {
+            return {
+                ...prevValue,
+                search: search
+            };
+        });
+    }
+
+    return (
     <div className="App">
-      <header className="App-header">
-      
+        <header className="App-header">
+        
         <SearchBar 
-          placeholder={'Search'} 
-          filterType={filterType}
-          onFilter={handleFilterChange} 
-          data={allData}
+            infoControl={infoControl}
+            data={allData}
+            onHome={handleHome}
+            onFilter={handleFilterChange}
+            onSearch={handleSearch}
         />
         <h1>The Campaign Atlas</h1>
         <div className='viewBar'>
 
         </div>
-      </header>
-      <div className="App-body">
+        </header>
+        <div className="App-body">
         <InfoContainer 
-            data={filterType.text === "Filter Search" ? allData : allData.filter( (value) => {
-                return value.type === filterType.type;
+            data={allData.filter( (value) => {
+                return ((value.name).toLowerCase().includes(infoControl.search) && (
+                    infoControl.filterType === "clear" ? true : value.type === infoControl.filterType
+                ));
             })}
+            // {infoControl.filterType === "clear" ? allData : allData.filter( (value) => {
+            //     return value.type === infoControl.filterType;
+            // })}
         />
         <ViewContainer />
-      </div>
+        </div>
     </div>
-  );
+    );
 }
 
 export default App;

@@ -2,13 +2,12 @@
   background-color: white;
   border-radius: 20px;
   padding: 1.5em;
-  text-align: left;
+  max-height: 85vh;
 
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 1em;
-
-  max-height: 85vh;
 
   overflow: hidden;
   overflow-y: auto;
