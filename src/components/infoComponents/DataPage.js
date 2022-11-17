@@ -1,6 +1,6 @@
 import './DataPage.css';
 
-function DataPage({data}) {
+function DataPage({refData, data}) {
     return (
         <div className='dataPage'>
             <h1> {data.name} </h1>
