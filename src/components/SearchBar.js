@@ -5,7 +5,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home"
 
-function SearchBar({infoControl, data, onHome, onFilter, onSearch}) {
+function SearchBar({infoControl, data, onHome, onFilter, onSearch, onPage}) {
     const [searchText, setSearchText] = useState("");
     const [searchCandidates, setSearchCandidates] = useState([]);
 
@@ -29,7 +29,7 @@ function SearchBar({infoControl, data, onHome, onFilter, onSearch}) {
         <div className='search'>
 
             {/* Home Button */}
-            <button className='homeButton' onClick={onHome}>
+            <button className='blockButton' onClick={onHome}>
                 <HomeIcon />
             </button>
 
@@ -70,7 +70,17 @@ function SearchBar({infoControl, data, onHome, onFilter, onSearch}) {
                 {searchCandidates.length !== 0 && (
                     <div className='searchCandidates'>
                         {searchCandidates.slice(0, 10).map((value, key) => {
-                            return <button className='searchItem'>{value.name}</button>
+                            return <button 
+                                className='searchItem'
+                                name={value.name}
+                                onClick={(event) => {
+                                    onPage(event.target.name);
+                                    setSearchText("");
+                                    setSearchCandidates([]);
+                                }}
+                                > 
+                                {value.name} 
+                            </button>
                         })}
                     </div>
                 )}

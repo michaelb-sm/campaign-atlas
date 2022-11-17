@@ -5,63 +5,6 @@
     gap: 1em;
 }
 
-/* HOME */
-
-.homeButton {
-    background-color: white;
-    width: 3em;
-    height: auto;
-    min-height: 2em;
-    border: 0;
-    border-radius: 2px;
-
-    display: grid;
-    place-items: center;
-}
-
-.homeButton:hover {
-    background-color: lightgrey;
-}
-
-/* FILTER */
-
-.filterField {
-    background-color: white;
-    height: auto;
-    min-width: 9rem;
-    border: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-
-    display: grid;
-    place-items: center;
-}
-
-.filterPlaceholder {
-    color: grey;
-}
-
-.btn-rounded-light {
-    background-color: white;
-    border: 0;
-    border-radius: 2px;
-}
-
-.btn-rounded-light:hover {
-    background-color: lightgrey;
-}
-
-.dropdown-menu-rounded-light {
-    margin-top: 0.5em;
-    border: 0;
-    border-radius: 2px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.dropdown-menu-rounded-light a:hover {
-    background-color: lightgrey;
-}
-
 /* SEARCH */
 
 .searchField {
@@ -69,21 +12,11 @@
 }
 
 .searchInputs input {
-    background-color: white;
-    border: 0;
-    border-radius: 2px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    font-size: 1rem;
-    padding: 0.5em;
 }
 
-.searchInputs input::placeholder {
-    color: grey;
-    opacity: 1;
-}
-
-input:focus {
+.searchInputs input:focus {
     outline: none;
 }
 

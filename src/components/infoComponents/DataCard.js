@@ -1,6 +1,7 @@
 import './DataCard.css';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-function DataCard({name, status, body}) {
+function DataCard({name, status, body, onClicked}) {
     return (
         <div className='dataCard'>
             <div className='data'>
@@ -10,7 +11,9 @@ function DataCard({name, status, body}) {
                 )}
                 <p> {body} </p>
             </div>
-            <button>click me</button>
+            <button onClick={() => {onClicked(name)}}>
+                <ExitToAppIcon />
+            </button>
         </div>
     );
 }

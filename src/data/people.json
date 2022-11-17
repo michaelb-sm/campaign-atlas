@@ -44,5 +44,24 @@
                 "body": "Keldyn lied to the party so they would help him get into the Underdark and meet a companion of his, Esafell Or'Mazrik."
             }
         ]
+    },
+    {
+        "name": "Allens",
+        "type": "",
+        "status": "",
+        "infoLinks": {
+            "allies": [],
+            "enemies": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
     }
 ]

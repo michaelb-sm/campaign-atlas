@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import './App.css';
 import SearchBar from './components/SearchBar';
 import InfoContainer from './components/InfoContainer';
@@ -13,7 +13,9 @@ import EntityData from './data/entities.json';
 import CreatureData from './data/creatures.json';
 
 function App() {
-    const allData = [...PersonData, ...FactionData, ...PlaceData, ...EventData, ...ThingData, ...EntityData, ...CreatureData]
+
+    // Import Data
+    const allData = useMemo(() => [...PersonData, ...FactionData, ...PlaceData, ...EventData, ...ThingData, ...EntityData, ...CreatureData], [])
     allData.sort((a, b) => {
     let na = a.name.toLowerCase(),
         nb = b.name.toLowerCase();
@@ -21,16 +23,25 @@ function App() {
         return na.localeCompare(nb);
     });
 
+    // Set up data tracker and input controller
+    const [curData, setCurData] = useState(allData[0]);
     const [infoControl, setInfoControl] = useState({
-        display: "main",
+        page: "main",
         search: "",
         filterType: "clear",
         filterText: "Filter Search"
     })
 
+    // Change data tracker upon user request
+    useEffect( () => {
+        if (infoControl.page !== "main") {
+            setCurData(allData.find( (value) => value.name === infoControl.page));
+        }
+    }, [allData, infoControl]);
+
     function handleHome() {
         setInfoControl({
-            display: "main",
+            page: "main",
             search: "",
             filterType: "clear",
             filterText: "Filter Search"
@@ -66,6 +77,15 @@ function App() {
         });
     }
 
+    function handlePageChange(page) {
+        setInfoControl( (prevValue) => {
+            return {
+                ...prevValue,
+                page: page
+            };
+        });
+    }
+
     return (
     <div className="App">
         <header className="App-header">
@@ -76,6 +96,7 @@ function App() {
             onHome={handleHome}
             onFilter={handleFilterChange}
             onSearch={handleSearch}
+            onPage={handlePageChange}
         />
         <h1>The Campaign Atlas</h1>
         <div className='viewBar'>
@@ -84,14 +105,10 @@ function App() {
         </header>
         <div className="App-body">
         <InfoContainer 
-            data={allData.filter( (value) => {
-                return ((value.name).toLowerCase().includes(infoControl.search) && (
-                    infoControl.filterType === "clear" ? true : value.type === infoControl.filterType
-                ));
-            })}
-            // {infoControl.filterType === "clear" ? allData : allData.filter( (value) => {
-            //     return value.type === infoControl.filterType;
-            // })}
+            infoControl={infoControl}
+            refData={allData}
+            data={curData}
+            onRedirect={handlePageChange}
         />
         <ViewContainer />
         </div>

@@ -1,3 +1,16 @@
+input {
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+    font-size: 1rem;
+    padding: 0.5em;
+}
+
+input::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
 .App {
     text-align: center;
 }
@@ -37,4 +50,63 @@
     .App-body .info-container {
         margin-bottom: 2em;
     }
+}
+
+/* === Common Classes === */
+
+/* BUTTON */
+
+.blockButton {
+    background-color: white;
+    width: 3em;
+    height: auto;
+    min-height: 2em;
+    border: 0;
+    border-radius: 2px;
+
+    display: grid;
+    place-items: center;
+}
+
+.blockButton:hover {
+    background-color: lightgrey;
+}
+
+/* DROPDOWN FILTER */
+
+.filterField {
+    background-color: white;
+    height: auto;
+    min-width: 9rem;
+    border: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    display: grid;
+    place-items: center;
+}
+
+.filterPlaceholder {
+    color: grey;
+}
+
+.btn-rounded-light {
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+}
+
+.btn-rounded-light:hover {
+    background-color: lightgrey;
+}
+
+.dropdown-menu-rounded-light {
+    margin-top: 0.5em;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dropdown-menu-rounded-light a:hover {
+    background-color: lightgrey;
 }
