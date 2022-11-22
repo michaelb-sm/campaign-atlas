@@ -11,7 +11,7 @@ function DataCard({name, status, body, onClicked}) {
                 )}
                 <p> {body} </p>
             </div>
-            <button onClick={() => {onClicked(name)}}>
+            <button className='blockButton' onClick={() => {onClicked(name)}}>
                 <ExitToAppIcon />
             </button>
         </div>
