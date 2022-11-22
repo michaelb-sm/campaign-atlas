@@ -1,0 +1,39 @@
+.info-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 1.5em;
+    max-height: 85vh;
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.info-container::-webkit-scrollbar {
+    display: none;
+}
+
+.modifyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.modifyContainer > * {
+    outline: 1px;
+    outline-style: solid;
+}
+
+.deleteField {
+    outline: 0;
+
+    display: flex;
+    gap: 0.5em;
+
+    align-items: center;
+}

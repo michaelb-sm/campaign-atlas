@@ -1,0 +1,131 @@
+[
+    {
+        "name": "",
+        "type": "person",
+        "status": "",
+        "infoLinks": {
+            "allies": [],
+            "enemies": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "faction",
+        "status": "",
+        "infoLinks": {
+            "members": [],
+            "enemies": [],
+            "people": [],
+            "places": [],
+            "events": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "place",
+        "status": "",
+        "infoLinks": {
+            "people": [],
+            "places": [],
+            "events": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "event",
+        "status": "",
+        "infoLinks": {
+            "people": [],
+            "factions": [],
+            "places": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "thing",
+        "status": "",
+        "infoLinks": {
+            "people": [],
+            "factions": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "entity",
+        "status": "",
+        "infoLinks": {
+            "factions": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "entities": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "",
+        "type": "creature",
+        "status": "",
+        "infoLinks": {
+            "people": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    }
+]

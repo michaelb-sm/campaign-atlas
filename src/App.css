@@ -1,38 +1,112 @@
+input {
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+    font-size: 1rem;
+    padding: 0.5em;
+}
+
+input::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* HEADER */
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #80b880;
+    padding: 1em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    align-items: center;
+}
+.App-header h1 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* BODY */
+
+.App-body {
+    padding: 1em 1em;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media (max-width: 1000px) {
+    .App-body {
+        display: block;
+    }
+
+    .App-body .info-container {
+        margin-bottom: 2em;
+    }
+}
+
+/* === Common Classes === */
+
+/* BUTTON */
+
+.blockButton {
+    background-color: white;
+    width: 3em;
+    height: auto;
+    min-height: 2em;
+    border: 0;
+    border-radius: 2px;
+
+    display: grid;
+    place-items: center;
+}
+
+.blockButton:hover {
+    background-color: lightgrey;
+}
+
+/* DROPDOWN FILTER */
+
+.filterField {
+    background-color: white;
+    height: auto;
+    min-width: 9rem;
+    border: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    display: grid;
+    place-items: center;
+}
+
+.filterPlaceholder {
+    color: grey;
+}
+
+.btn-rounded-light {
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+}
+
+.btn-rounded-light:hover {
+    background-color: lightgrey;
+}
+
+.dropdown-menu-rounded-light {
+    margin-top: 0.5em;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dropdown-menu-rounded-light a:hover {
+    background-color: lightgrey;
 }

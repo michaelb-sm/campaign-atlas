@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Vasser's Vault of Static Storage",
+        "type": "thing",
+        "status": "In the possession of the party",
+        "infoLinks": {
+            "people": ["Meoran Vasser", "Ambriel", "Jappa", "Julie"],
+            "factions": [],
+            "places": ["Ashvenora", "Dun Vard\u00FCn"],
+            "events": [],
+            "items": [],
+            "other": ["Azzuggzayir"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Vasser's Vault of Static storage is a magical item that operates similarly to a Bag of Holding or a Herward's Handy Haversack. It appears to be a silver scroll case about a foot in length, but carries drawstrings which allow the user to open a pocket dimension used for storing small and medium items."
+            },
+            {
+                "heading": "Special Properties",
+                "body": "The Vault contains 2 different drawstrings meant for accessing the contents stored inside. The first (topped by a silver ring) pulls open a void in space like a wound canvas, which acts as a window to the pocket dimension where the items are stored. The second (topped by a golden ring) opens a window to the dimension but also forcibly ejects the contents of the Vault into the surrounding space. The Vault also has a unique property to store Tiny living creatures in stasis indefinitely, without any adverse effects."
+            },
+            {
+                "heading": "Obtaining the Vault",
+                "body": "The party was given the Vault to transport the pseudodragon Azzugzayir to its creator, Meoran Vasser. Upon reaching Meoran and handing over the Vault and Azzugzayir, Meoran gifted the party the Vault, stating that he had replaced it with a better version already."
+            }
+        ]
+    },
+    {
+        "name": "Driftglobe",
+        "type": "thing",
+        "status": "In the possession of the party",
+        "infoLinks": {
+            "people": ["Ambriel", "Jappa", "Julie"],
+            "factions": [],
+            "places": ["Blindshore"],
+            "events": ["Blindshore Haunting"],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "The Driftglobe is a crystal ball containing swirling blue energy that can be made to emenate light."
+            },
+            {
+                "heading": "Obtaining the Driftglobe",
+                "body": "During the rescue mission into Blindshore following the Blindshore Haunting, the Driftglobe was found by the party in Blindshore's Freehouse in the arms of a dead priest."
+            }
+        ]
+    }
+]

@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Ada Levesmere",
+        "type": "person",
+        "status": "Alive",
+        "infoLinks": {
+            "allies": ["Ambriel", "Jappa", "Julie", "Devek", "Florence Amber", "Trehan Empire"],
+            "enemies": ["The Conclave of Light"],
+            "places": ["Levesmere Hold"],
+            "events": ["Orc Uprising"],
+            "items": ["Acheron Blade", "Amulet of Khatoraa"],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Ada Levesmere is a human woman in her mid-forties with long black hair and stern green eyes. She is a capable wizard, though most of her attention goes to politics and the running of Levenmere Hold"
+            },
+            {
+                "heading": "Family",
+                "body": "The Levesmere family controls Levenmere Hold, the northernmost Hold in the Trehan Empire"
+            }
+        ]
+    },
+    {
+        "name": "Keldyn Do'Sek",
+        "type": "person",
+        "status": "Unknown",
+        "infoLinks": {
+            "allies": ["Esafell Or'Mazrik"],
+            "enemies": ["The Conclave of Light"],
+            "places": ["The Underdark", "Blindshore"],
+            "events": ["Blindshore Haunting"],
+            "items": ["Shadow Blade"],
+            "other": ["Zylena"]
+        },
+        "main": [
+            {
+                "heading": "Description",
+                "body": "Keldyn is an athletic male drow with long white hair and angular features. He wears darkened leathers."
+            },
+            {
+                "heading": "Betrayal",
+                "body": "Keldyn lied to the party so they would help him get into the Underdark and meet a companion of his, Esafell Or'Mazrik."
+            }
+        ]
+    },
+    {
+        "name": "Allens1",
+        "type": "person",
+        "status": "",
+        "infoLinks": {
+            "allies": [],
+            "enemies": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "Allens2",
+        "type": "person",
+        "status": "",
+        "infoLinks": {
+            "allies": [],
+            "enemies": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    },
+    {
+        "name": "Allens3",
+        "type": "person",
+        "status": "",
+        "infoLinks": {
+            "allies": [],
+            "enemies": [],
+            "places": [],
+            "events": [],
+            "items": [],
+            "other": []
+        },
+        "main": [
+            {
+                "heading": "",
+                "body": ""
+            }
+        ]
+    }
+]
