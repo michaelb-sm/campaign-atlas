@@ -21,21 +21,23 @@ connection.once('open', () => {
 });
 
 // Routing
-const peopleRouter = require('./routes/people');
-const factionRouter = require('/routes/factions');
-const placeRouter = require('/routes/places');
-const eventRouter = require('/routes/events');
-const thingRouter = require('/routes/things');
-const entityRouter = require('/routes/entities');
-const creatureRouter = require('/routes/creatures');
+const peopleRouter = require('./routes/people.route');
+const factionRouter = require('./routes/factions.route');
+const placeRouter = require('./routes/places.route');
+const eventRouter = require('./routes/events.route');
+const thingRouter = require('./routes/things.route');
+const entityRouter = require('./routes/entities.route');
+const creatureRouter = require('./routes/creatures.route');
 
 app.use('/people', peopleRouter);
-app.use('/faction', factionRouter);
-app.use('/place', placeRouter);
-app.use('/event', eventRouter);
-app.use('/thing', thingRouter);
-app.use('/entity', entityRouter);
-app.use('/creature', creatureRouter);
+app.use('/factions', factionRouter);
+app.use('/places', placeRouter);
+app.use('/events', eventRouter);
+app.use('/things', thingRouter);
+app.use('/entities', entityRouter);
+app.use('/creatures', creatureRouter);
+
+app.use('*', (req, res) => res.status(404).json({error: "Not Found"}));
 
 // Port Connection
 app.listen(port, () => {

@@ -1,20 +1,22 @@
 const router = require('express').Router();
 let Event = require('../models/event.model');
 
-router.route('/').get( (req, res) => {
-    Event.find()
+router.route('/').get( async (req, res) => {
+    Event.find().select({name: 1, dataType: 1, status: 1})
         .then(events => res.json(events))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post( (req, res) => {
+router.route('/add').post( async (req, res) => {
     const name = req.body.name;
+    const dataType = 'event';
     const status = req.body.status;
     const infoLinks = req.body.infoLinks;
     const main = req.body.main;
 
     const newEvent = new Event({
         name,
+        dataType,
         status,
         infoLinks,
         main
@@ -25,19 +27,19 @@ router.route('/add').post( (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').get( (req, res) => {
+router.route('/:id').get( async (req, res) => {
     Event.findById(req.params.id)
         .then(event => res.json(event))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').delete( (req, res) => {
+router.route('/:id').delete( async (req, res) => {
     Event.findByIdAndDelete(req.params.id)
         .then(() => res.json('Event deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( (req, res) => {
+router.route('/update/:id').post( async (req, res) => {
     Event.findById(req.params.id)
         .then(event => {
             event.name = req.body.name;

@@ -1,43 +1,57 @@
 import React, { useState, useEffect, useMemo } from "react";
+import Axios from 'axios';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import InfoContainer from './components/InfoContainer';
 import ViewContainer from './components/ViewContainer';
 
-import PersonData from './data/people.json';
-import FactionData from './data/factions.json';
-import PlaceData from './data/places.json';
-import EventData from './data/events.json';
-import ThingData from './data/things.json';
-import EntityData from './data/entities.json';
-import CreatureData from './data/creatures.json';
-
 function App() {
 
-    // Import Data
-    const allData = useMemo(() => [...PersonData, ...FactionData, ...PlaceData, ...EventData, ...ThingData, ...EntityData, ...CreatureData], [])
-    allData.sort((a, b) => {
-    let na = a.name.toLowerCase(),
-        nb = b.name.toLowerCase();
+    // Set up backend data states
+    const [personData, setPersonData] = useState([]);
+    const [factionData, setFactionData] = useState([]);
+    const [placeData, setPlaceData] = useState([]);
+    const [eventData, setEventData] = useState([]);
+    const [thingData, setThingData] = useState([]);
+    const [entityData, setEntityData] = useState([]);
+    const [creatureData, setCreatureData] = useState([]);
 
-        return na.localeCompare(nb);
-    });
+    useEffect(() => {
+        Axios.get('http://localhost:3001/people/')
+            .then(response => setPersonData(response.data));
+        Axios.get('http://localhost:3001/factions/')
+            .then(response => setFactionData(response.data));
+        Axios.get('http://localhost:3001/places/')
+            .then(response => setPlaceData(response.data));
+        Axios.get('http://localhost:3001/events/')
+            .then(response => setEventData(response.data));
+        Axios.get('http://localhost:3001/things/')
+            .then(response => setThingData(response.data));
+        Axios.get('http://localhost:3001/entities/')
+            .then(response => setEntityData(response.data));
+        Axios.get('http://localhost:3001/creatures/')
+            .then(response => setCreatureData(response.data));
+    }, []);
 
-    // Set up data tracker and input controller
-    const [curData, setCurData] = useState(allData[0]);
+    const allData = useMemo( () => {
+        const data = [...personData, ...factionData, ...placeData, ...eventData, ...thingData, ...entityData, ...creatureData];
+        data.sort((a, b) => {
+            let na = a.name.toLowerCase(),
+                nb = b.name.toLowerCase();
+            return na.localeCompare(nb);
+        });
+        return data;
+    }, [personData, factionData, placeData, eventData, thingData, entityData, creatureData]);
+
+    // Set up current data tracker and info controller
     const [infoControl, setInfoControl] = useState({
         page: "main",
         search: "",
         filterType: "clear",
         filterText: "Filter Search"
-    })
+    });
 
     // Change data tracker upon user request
-    useEffect( () => {
-        if (infoControl.page !== "main") {
-            setCurData(allData.find( (value) => value.name === infoControl.page));
-        }
-    }, [allData, infoControl]);
 
     function handleHome() {
         setInfoControl({
@@ -77,11 +91,23 @@ function App() {
         });
     }
 
-    function handlePageChange(page) {
+    function handlePageChange(pageId, dataType) {
+        let pageRoute = '';
+        switch (dataType) {
+            case 'person':
+                pageRoute = 'people';
+                break;
+            case 'entity':
+                pageRoute = 'entities';
+                break;
+            default:
+                pageRoute = dataType + 's';
+        }
+        
         setInfoControl( (prevValue) => {
             return {
                 ...prevValue,
-                page: page
+                page: pageRoute + '/' + pageId
             };
         });
     }
@@ -107,7 +133,6 @@ function App() {
         <InfoContainer 
             infoControl={infoControl}
             refData={allData}
-            data={curData}
             onRedirect={handlePageChange}
         />
         <ViewContainer />

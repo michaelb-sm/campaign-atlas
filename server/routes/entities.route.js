@@ -1,20 +1,22 @@
 const router = require('express').Router();
 let Entity = require('../models/entity.model');
 
-router.route('/').get( (req, res) => {
-    Entity.find()
+router.route('/').get( async (req, res) => {
+    Entity.find().select({name: 1, dataType: 1, status: 1})
         .then(entities => res.json(entities))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post( (req, res) => {
+router.route('/add').post( async (req, res) => {
     const name = req.body.name;
+    const dataType = 'entity';
     const status = req.body.status;
     const infoLinks = req.body.infoLinks;
     const main = req.body.main;
 
     const newEntity = new Entity({
         name,
+        dataType,
         status,
         infoLinks,
         main
@@ -25,19 +27,19 @@ router.route('/add').post( (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').get( (req, res) => {
+router.route('/:id').get( async (req, res) => {
     Entity.findById(req.params.id)
         .then(entity => res.json(entity))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').delete( (req, res) => {
+router.route('/:id').delete( async (req, res) => {
     Entity.findByIdAndDelete(req.params.id)
         .then(() => res.json('Entity deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( (req, res) => {
+router.route('/update/:id').post( async (req, res) => {
     Entity.findById(req.params.id)
         .then(entity => {
             entity.name = req.body.name;
