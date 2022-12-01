@@ -69,12 +69,13 @@ function SearchBar({infoControl, data, onHome, onFilter, onSearch, onPage}) {
                 {/* Display possible search results */}
                 {searchCandidates.length !== 0 && (
                     <div className='searchCandidates'>
-                        {searchCandidates.slice(0, 10).map((value, key) => {
+                        {searchCandidates.slice(0, 10).map((value) => {
                             return <button 
                                 className='searchItem'
                                 name={value.name}
-                                onClick={(event) => {
-                                    onPage(event.target.name);
+                                key={value._id}
+                                onClick={() => {
+                                    onPage(value._id, value.dataType);
                                     setSearchText("");
                                     setSearchCandidates([]);
                                 }}

@@ -1,9 +1,10 @@
-const mongoose = requre('mongoose');
+const mongoose = require('mongoose');
 
 const factionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
         trim: true
     },
     dataType: {

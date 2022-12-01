@@ -6,9 +6,11 @@ import DataPage from './infoComponents/DataPage';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function InfoContainer({infoControl, refData, data, onRedirect}) {
+function InfoContainer({infoControl, refData, onRedirect}) {
     return (
         <div className='info-container'>
+
+            {/* Interaction Bar */}
             {infoControl.page === "main" ? ( 
                 <div>
                     <div className='modifyContainer'>
@@ -38,7 +40,7 @@ function InfoContainer({infoControl, refData, data, onRedirect}) {
                         <button className='blockButton'>
                             <DeleteForeverIcon />
                         </button>
-                        <label className='deleteField' for='confirmDelete'> 
+                        <label className='deleteField' htmlFor='confirmDelete'> 
                             <input type='checkbox' id='confirmDelete' name='confirmDelete' />
                             <div>Confirm Deletion</div>
                         </label>
@@ -46,21 +48,25 @@ function InfoContainer({infoControl, refData, data, onRedirect}) {
                     <hr />
                 </div>
             )}
+
+            {/* Data Fields */}
             {infoControl.page === "main" ? (
                 refData.filter( (value) => {
                     return ((
                         (value.name).toLowerCase().includes(infoControl.search)
                         ) && (
-                        infoControl.filterType === "clear" ? true : value.type === infoControl.filterType
+                        infoControl.filterType === "clear" ? true : value.dataType === infoControl.filterType
                         )
                     );
-                }).map((value, key) => {
+                }).map((value) => {
                     return (
-                        <div>
+                        <div key={value._id}>
                             <DataCard 
-                                name={value.name} 
-                                status={value.status} 
-                                body={value.main[0].body}
+                                data={value}
+                                // name={value.name} 
+                                // id={value._id}
+                                // status={value.status} 
+                                // body={value.main[0].body}
                                 onClicked={onRedirect}
                             />
                             <hr/>
@@ -68,7 +74,7 @@ function InfoContainer({infoControl, refData, data, onRedirect}) {
                     );
                 })
             ) : (
-                <DataPage refData={refData} data={data}/>
+                <DataPage page={infoControl.page} refData={refData}/>
             )}
         </div>
     );
