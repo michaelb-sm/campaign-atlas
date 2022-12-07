@@ -11,7 +11,13 @@ router.route('/add').post( async (req, res) => {
     const name = req.body.name;
     const dataType = 'event';
     const status = req.body.status;
-    const infoLinks = req.body.infoLinks;
+    const infoLinks = {
+        "people": [],
+        "factions": [],
+        "places": [],
+        "items": [],
+        "other": []
+    };
     const main = req.body.main;
 
     const newEvent = new Event({
@@ -39,7 +45,7 @@ router.route('/:id').delete( async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( async (req, res) => {
+router.route('/:id/update').post( async (req, res) => {
     Event.findById(req.params.id)
         .then(event => {
             event.name = req.body.name;

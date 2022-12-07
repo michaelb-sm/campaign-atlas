@@ -9,7 +9,6 @@ function DataCard({data, onClicked}) {
                 {data.status !== "" && (
                     <h5> Status: {data.status} </h5>
                 )}
-                {/* <p> {body} </p> */}
             </div>
             <button className='blockButton' onClick={() => {onClicked(data._id, data.dataType)}}>
                 <ExitToAppIcon />

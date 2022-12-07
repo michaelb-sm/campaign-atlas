@@ -11,7 +11,13 @@ router.route('/add').post( async (req, res) => {
     const name = req.body.name;
     const dataType = 'creature';
     const status = req.body.status;
-    const infoLinks = req.body.infoLinks;
+    const infoLinks = {
+        "people": [],
+        "places": [],
+        "events": [],
+        "items": [],
+        "other": []
+    };
     const main = req.body.main;
 
     const newCreature = new Creature({
@@ -39,7 +45,7 @@ router.route('/:id').delete( async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( async (req, res) => {
+router.route('/:id/update').post( async (req, res) => {
     Creature.findById(req.params.id)
         .then(creature => {
             creature.name = req.body.name;
