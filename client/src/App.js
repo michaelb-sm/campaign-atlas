@@ -44,6 +44,7 @@ function App() {
     }, [personData, factionData, placeData, eventData, thingData, entityData, creatureData]);
 
     // Set up current data tracker and info controller
+    const [curData, setCurData] = useState();
     const [infoControl, setInfoControl] = useState({
         page: "main",
         search: "",
@@ -51,8 +52,14 @@ function App() {
         filterText: "Filter Search"
     });
 
-    // Change data tracker upon user request
+    useEffect(() => {
+        if (infoControl.page !== "main") {
+            Axios.get('http://localhost:3001/' + infoControl.page)
+                .then(response => setCurData(response.data));
+        }
+    }, [infoControl.page]);
 
+    // Handle all main page user requests
     function handleHome() {
         setInfoControl({
             page: "main",
@@ -91,6 +98,34 @@ function App() {
         });
     }
 
+    // Entry Navigation and Data Handling 
+
+    function handleNewEntry(newName, newType) {
+        let pageRoute = '';
+        switch (newType) {
+            case 'person':
+                pageRoute = 'people';
+                break;
+            case 'entity':
+                pageRoute = 'entities';
+                break;
+            default:
+                pageRoute = newType + 's';
+        }
+        const newEntry = {
+            name: newName,
+            dataType: newType,
+            status: '',
+            main: []
+        };
+        console.log('Posting ' + newName + ' to ' + pageRoute);
+        Axios.post('http://localhost:3001/' + pageRoute + '/add', newEntry)
+            .then(response => {
+                handleDataChange(pageRoute);
+                handlePageChange(response.data._id, response.data.dataType)
+            });
+    }
+
     function handlePageChange(pageId, dataType) {
         let pageRoute = '';
         switch (dataType) {
@@ -112,6 +147,57 @@ function App() {
         });
     }
 
+    function handleUpdate(updatedData) {
+        Axios.post('http://localhost:3001/' + infoControl.page + '/update', updatedData)
+            .then(response => {
+                handleDataChange(infoControl.page.split('/')[0]);
+                Axios.get('http://localhost:3001/' + infoControl.page)
+                    .then(response => setCurData(response.data));
+            });
+    }
+
+    function handleDeletion() {
+        Axios.delete('http://localhost:3001/' + infoControl.page)
+            .then(response => {
+                handleDataChange(infoControl.page.split('/')[0]);
+                handleHome();
+            });
+    }
+
+    function handleDataChange(route) {
+        Axios.get('http://localhost:3001/' + route + '/')
+            .then(response => {
+                switch (route) {
+                    case 'people':
+                        setPersonData(response.data);
+                        break;
+                    case 'factions':
+                        setFactionData(response.data)
+                        break;
+                    case 'places':
+                        setPlaceData(response.data)
+                        break;
+                    case 'events':
+                        setEventData(response.data)
+                        break;
+                    case 'things':
+                        setThingData(response.data)
+                        break;
+                    case 'entities':
+                        setEntityData(response.data)
+                        break;
+                    case 'creatures':
+                        setCreatureData(response.data)
+                        break;
+                    default:
+                        console.log("New data indeterminate: Please check what data was just changed");
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    // JSX
+
     return (
     <div className="App">
         <header className="App-header">
@@ -132,8 +218,12 @@ function App() {
         <div className="App-body">
         <InfoContainer 
             infoControl={infoControl}
+            curData={curData}
             refData={allData}
+            onCreate={handleNewEntry}
             onRedirect={handlePageChange}
+            onUpdate={handleUpdate}
+            onDelete={handleDeletion}
         />
         <ViewContainer />
         </div>

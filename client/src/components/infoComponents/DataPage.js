@@ -1,44 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './DataPage.css';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function DataPage({page, refData}) {
-    const [data, setData] = useState();
+function DataPage({page, data, refData, onRedirect, onUpdate}) {
+
+    const [localData, setLocalData] = useState({});
+    const [editKey, setEditKey] = useState('');
 
     useEffect(() => {
-        if (page !== "main") {
-            Axios.get('http://localhost:3001/' + page)
-                .then(response => setData(response.data));
+        setLocalData(data);
+    }, [data, editKey]);
+
+    function handleEdit(key) {
+        if (key !== editKey) {
+            setEditKey(key);
+        } else {
+            onUpdate(localData);
+            setEditKey('');
         }
-    }, [page]);
+    }
+
+    function handleStatusChange(event) {
+        const newStatus = event.target.value;
+        setLocalData( (prevValue) => {
+            return {
+                ...prevValue,
+                status: newStatus
+            };
+        });
+    }
+
+    function handleParagraphHeadingChange(event, index) {
+        const newHeading = event.target.value;
+        setLocalData( (prevValue) => {
+            const newMain = prevValue.main;
+            newMain[index].heading = newHeading;
+            return {
+                ...prevValue,
+                main: newMain
+            };
+        });
+    }
+
+    function handleParagraphBodyChange(event, index) {
+        const newBody = event.target.value;
+        setLocalData( (prevValue) => {
+            const newMain = prevValue.main;
+            newMain[index].body = newBody;
+            return {
+                ...prevValue,
+                main: newMain
+            };
+        });
+    }
+
+    function handleNewParagraph() {
+        const newData = data;
+        newData.main.push({heading: '', body: ''});
+        onUpdate(newData);
+        setEditKey('');
+    }
+
+    function handleParagraphDeletion(index) {
+        const newData = data;
+        newData.main.splice(index, 1);
+        onUpdate(newData);
+        setEditKey('');
+    }
 
     if (!data) {
         return <p>Loading...</p>
     }
-    
+
     return (
         <div className='dataPage'>
             <h1> {data.name} </h1>
-            {data.status !== "" && (
-                <h4> {data.status} </h4>
-            )}
+            <div className='status'>
+                <button className='blockButton' onClick={() => handleEdit('status')}>
+                    {editKey === 'status' ? <SaveIcon fontSize='small' /> : <EditIcon fontSize='small'/>}
+                </button>
+                {editKey === 'status' ? (
+                    <h4>Status: <input className='outline' onChange={(event) => handleStatusChange(event)} value={localData.status} /></h4>
+                ) : (
+                    <h4>Status: {data.status}</h4>
+                )}
+            </div>
             <hr/>
             <div className='infoLinks'>
-                {Object.keys(data.infoLinks).map( (value, key) => {
+                {Object.keys(data.infoLinks).map( (value) => {
                     return (
-                        <h2 key={key}> {value} </h2>
+                        <Dropdown key={value} as={ButtonGroup}>
+                            <Dropdown.Toggle split variant='rounded-light'/>
+                            <div className='filterField'> {value} </div>
+                            <Dropdown.Menu variant='rounded-light'>
+                                <input className='addLinks' placeholder='Add Reference' />
+                                <Dropdown.Divider />
+                                {data.infoLinks[value].map( (item, index) => {
+                                    const refItem = refData.find(element => element.name === item);
+                                    const refId = (refItem ? refItem._id : index.toString());
+                                    return <Dropdown.Item key={refId} eventKey={refId}>{item}</Dropdown.Item>
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        
                     );
                 })}
             </div>
             <hr/>
-            {data.main.map( (value) => {
+            {data.main.map( (value, index) => {
                 return (
-                    <div key={value._id}>
-                        <h4> {value.heading} </h4>
-                        <p> {value.body} </p>
+                    <div key={value._id ? value._id : index}>
+                        <div className='heading'>
+                            <button className='blockButton' onClick={() => handleEdit('main' + String(index))}>
+                                {editKey === 'main' + String(index) ? <SaveIcon fontSize='small' /> : <EditIcon fontSize='small'/>}
+                            </button>
+                            {editKey === 'main' + String(index) && 
+                                <button className='blockButton' onClick={() => handleParagraphDeletion(index)}>
+                                    <DeleteForeverIcon fontSize='small'/>
+                                </button>
+                            }
+                            {editKey === 'main' + String(index) ? (
+                                <input className='outline' onChange={(event) => handleParagraphHeadingChange(event, index)} value={localData.main[index].heading} />
+                            ) : (
+                                <h4> {value.heading} </h4>
+                            )}
+                        </div>
+                        {editKey === 'main' + String(index) ? (
+                            <textarea onChange={(event) => handleParagraphBodyChange(event, index)} value={localData.main[index].body} />
+                        ) : (
+                            <p> {value.body} </p>
+                        )}
                     </div>
                 );
             })}
+            <button className='blockButton' onClick={() => handleNewParagraph()}><AddIcon /></button>
         </div>
     )
 }

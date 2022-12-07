@@ -11,7 +11,14 @@ router.route('/add').post( async (req, res) => {
     const name = req.body.name;
     const dataType = 'entity';
     const status = req.body.status;
-    const infoLinks = req.body.infoLinks;
+    const infoLinks = {
+        "factions": [],
+        "places": [],
+        "events": [],
+        "items": [],
+        "entities": [],
+        "other": []
+    };
     const main = req.body.main;
 
     const newEntity = new Entity({
@@ -39,7 +46,7 @@ router.route('/:id').delete( async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( async (req, res) => {
+router.route('/:id/update').post( async (req, res) => {
     Entity.findById(req.params.id)
         .then(entity => {
             entity.name = req.body.name;

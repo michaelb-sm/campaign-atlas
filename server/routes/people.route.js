@@ -11,7 +11,14 @@ router.route('/add').post( async (req, res) => {
     const name = req.body.name;
     const dataType = 'person';
     const status = req.body.status;
-    const infoLinks = req.body.infoLinks;
+    const infoLinks = {
+        "allies": [],
+        "enemies": [],
+        "places": [],
+        "events": [],
+        "items": [],
+        "other": []
+    };
     const main = req.body.main;
 
     const newPerson = new Person({
@@ -23,7 +30,7 @@ router.route('/add').post( async (req, res) => {
     });
 
     newPerson.save()
-        .then(() => res.json('Person added!'))
+        .then((result) => res.json(result))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -39,7 +46,7 @@ router.route('/:id').delete( async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post( async (req, res) => {
+router.route('/:id/update').post( async (req, res) => {
     Person.findById(req.params.id)
         .then(person => {
             person.name = req.body.name;

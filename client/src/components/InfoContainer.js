@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './InfoContainer.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
@@ -6,7 +7,13 @@ import DataPage from './infoComponents/DataPage';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function InfoContainer({infoControl, refData, onRedirect}) {
+function InfoContainer({infoControl, curData, refData, onCreate, onRedirect, onUpdate, onDelete}) {
+
+    const [newName, setNewName] = useState('');
+    const [newType, setNewType] = useState({display: 'Type', dataType: ''});
+
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     return (
         <div className='info-container'>
 
@@ -14,13 +21,21 @@ function InfoContainer({infoControl, refData, onRedirect}) {
             {infoControl.page === "main" ? ( 
                 <div>
                     <div className='modifyContainer'>
-                        <button className='blockButton'>
+                        <button className='blockButton' onClick={() => {
+                            console.log('Name: ' + newName + ', type: ' + newType.dataType);
+                                if (newName && newName !== '' && newType.dataType !== '') {
+                                    onCreate(newName, newType.dataType);
+                                    setNewName('');
+                                    setNewType({display: 'Type', dataType: ''})
+                                }
+                            }}
+                        >
                             <AddIcon />
                         </button>
-                        <input placeholder="Create New Entry" />
-                        <Dropdown as={ButtonGroup}>
+                        <input placeholder="Create New Entry" value={newName} onChange={(event) => {setNewName(event.target.value)}}/>
+                        <Dropdown as={ButtonGroup} onSelect={(eventKey, event) => {setNewType({display: event.target.text, dataType: eventKey})}}>
                             <Dropdown.Toggle split variant='rounded-light'/>
-                            <div className='filterField'> Type </div>
+                            <div className='filterField'> {newType.display} </div>
                             <Dropdown.Menu variant='rounded-light'>
                                 <Dropdown.Item eventKey="person">Person</Dropdown.Item>
                                 <Dropdown.Item eventKey="faction">Faction</Dropdown.Item>
@@ -37,11 +52,25 @@ function InfoContainer({infoControl, refData, onRedirect}) {
             ) : (
                 <div>
                     <div className='modifyContainer'>
-                        <button className='blockButton'>
+                        <button className='blockButton' onClick={() => {
+                                if (confirmDelete) {
+                                    onDelete();
+                                    setConfirmDelete(false);
+                                } else {
+                                    alert("Check 'Confirm Deletion' to delete entry");
+                                }
+                            }}
+                        >
                             <DeleteForeverIcon />
                         </button>
                         <label className='deleteField' htmlFor='confirmDelete'> 
-                            <input type='checkbox' id='confirmDelete' name='confirmDelete' />
+                            <input 
+                                type='checkbox' 
+                                id='confirmDelete' 
+                                name='confirmDelete' 
+                                defaultChecked={confirmDelete}
+                                onChange={() => setConfirmDelete(!confirmDelete)}
+                            />
                             <div>Confirm Deletion</div>
                         </label>
                     </div>
@@ -63,10 +92,6 @@ function InfoContainer({infoControl, refData, onRedirect}) {
                         <div key={value._id}>
                             <DataCard 
                                 data={value}
-                                // name={value.name} 
-                                // id={value._id}
-                                // status={value.status} 
-                                // body={value.main[0].body}
                                 onClicked={onRedirect}
                             />
                             <hr/>
@@ -74,7 +99,7 @@ function InfoContainer({infoControl, refData, onRedirect}) {
                     );
                 })
             ) : (
-                <DataPage page={infoControl.page} refData={refData}/>
+                <DataPage page={infoControl.page} data={curData} refData={refData} onRedirect={onRedirect} onUpdate={onUpdate}/>
             )}
         </div>
     );

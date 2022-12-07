@@ -1,6 +1,49 @@
+h4 {
+    margin: 0;
+}
+
+.outline {
+    outline: 1px;
+    outline-style: solid;
+}
+
+/* Status */
+.status {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+}
+
+/* Infolinks */
+
 .infoLinks {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1em 2em;
+    gap: 1em;
+}
+
+.infoLinks > * {
+    outline: 1px;
+    outline-style: solid;
+}
+
+.addLinks {
+    width: 100%;
+}
+
+/* Main */
+
+textarea {
+    width: 100%;
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
 }
