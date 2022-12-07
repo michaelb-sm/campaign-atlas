@@ -9,6 +9,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function InfoContainer({infoControl, curData, refData, onCreate, onRedirect, onUpdate, onDelete}) {
 
+    // State variables for creating/deleting new data
     const [newName, setNewName] = useState('');
     const [newType, setNewType] = useState({display: 'Type', dataType: ''});
 
@@ -20,6 +21,7 @@ function InfoContainer({infoControl, curData, refData, onCreate, onRedirect, onU
             {/* Interaction Bar */}
             {infoControl.page === "main" ? ( 
                 <div>
+                    {/* Create New Data */}
                     <div className='modifyContainer'>
                         <button className='blockButton' onClick={() => {
                             console.log('Name: ' + newName + ', type: ' + newType.dataType);
@@ -51,6 +53,7 @@ function InfoContainer({infoControl, curData, refData, onCreate, onRedirect, onU
                 </div>
             ) : (
                 <div>
+                    {/* Delete Current Entry */}
                     <div className='modifyContainer'>
                         <button className='blockButton' onClick={() => {
                                 if (confirmDelete) {
@@ -78,7 +81,7 @@ function InfoContainer({infoControl, curData, refData, onCreate, onRedirect, onU
                 </div>
             )}
 
-            {/* Data Fields */}
+            {/* Data Fields (cards or page) */}
             {infoControl.page === "main" ? (
                 refData.filter( (value) => {
                     return ((

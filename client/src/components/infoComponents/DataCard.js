@@ -2,6 +2,7 @@ import './DataCard.css';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 function DataCard({data, onClicked}) {
+    // Displays limited fields for all data
     return (
         <div className='dataCard'>
             <div className='data'>

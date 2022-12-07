@@ -92,6 +92,8 @@ input::placeholder {
     color: grey;
 }
 
+/* REACT BOOTSTRAP VARIANTS */
+
 .btn-rounded-light {
     background-color: white;
     border: 0;
