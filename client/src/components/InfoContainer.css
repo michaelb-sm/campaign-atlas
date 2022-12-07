@@ -17,6 +17,8 @@
     display: none;
 }
 
+/* ENTRY CREATION/DELETION */
+
 .modifyContainer {
     display: flex;
     flex-wrap: wrap;

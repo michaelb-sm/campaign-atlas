@@ -6,9 +6,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home"
 
 function SearchBar({infoControl, data, onHome, onFilter, onSearch, onPage}) {
+
+    // State variables for searchbar
     const [searchText, setSearchText] = useState("");
     const [searchCandidates, setSearchCandidates] = useState([]);
 
+    // Update search inputs and display results
     function handleUserInput(event) {
         const inputText = (event.target.value).toLowerCase();
         setSearchText(inputText);
@@ -69,12 +72,13 @@ function SearchBar({infoControl, data, onHome, onFilter, onSearch, onPage}) {
                 {/* Display possible search results */}
                 {searchCandidates.length !== 0 && (
                     <div className='searchCandidates'>
-                        {searchCandidates.slice(0, 10).map((value, key) => {
+                        {searchCandidates.slice(0, 10).map((value) => {
                             return <button 
                                 className='searchItem'
                                 name={value.name}
-                                onClick={(event) => {
-                                    onPage(event.target.name);
+                                key={value._id}
+                                onClick={() => {
+                                    onPage(value._id, value.dataType);
                                     setSearchText("");
                                     setSearchCandidates([]);
                                 }}
