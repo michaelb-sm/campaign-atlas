@@ -9,6 +9,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function DataPage({page, data, refData, onRedirect, onUpdate}) {
 
+    // State variables for editiing data
     const [localData, setLocalData] = useState({});
     const [editKey, setEditKey] = useState('');
 
@@ -16,15 +17,18 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
         setLocalData(data);
     }, [data, editKey]);
 
+    // Change current field to edit
     function handleEdit(key) {
         if (key !== editKey) {
             setEditKey(key);
         } else {
+            // Only update while exiting on current field
             onUpdate(localData);
             setEditKey('');
         }
     }
 
+    // Keep track of status edits
     function handleStatusChange(event) {
         const newStatus = event.target.value;
         setLocalData( (prevValue) => {
@@ -35,6 +39,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
         });
     }
 
+    // Keep track of paragraph heading edits
     function handleParagraphHeadingChange(event, index) {
         const newHeading = event.target.value;
         setLocalData( (prevValue) => {
@@ -47,6 +52,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
         });
     }
 
+    // Keep track of paragraph body edits
     function handleParagraphBodyChange(event, index) {
         const newBody = event.target.value;
         setLocalData( (prevValue) => {
@@ -59,13 +65,15 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
         });
     }
 
+    // Create new paragraph
     function handleNewParagraph() {
         const newData = data;
         newData.main.push({heading: '', body: ''});
         onUpdate(newData);
-        setEditKey('');
+        setEditKey('main' + String(newData.main.length - 1));
     }
 
+    // Create new 
     function handleParagraphDeletion(index) {
         const newData = data;
         newData.main.splice(index, 1);
@@ -79,6 +87,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
 
     return (
         <div className='dataPage'>
+            {/* Name and Status */}
             <h1> {data.name} </h1>
             <div className='status'>
                 <button className='blockButton' onClick={() => handleEdit('status')}>
@@ -91,6 +100,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
                 )}
             </div>
             <hr/>
+            {/* Infolinks */}
             <div className='infoLinks'>
                 {Object.keys(data.infoLinks).map( (value) => {
                     return (
@@ -112,6 +122,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
                 })}
             </div>
             <hr/>
+            {/* Information Paragraphs */}
             {data.main.map( (value, index) => {
                 return (
                     <div key={value._id ? value._id : index}>

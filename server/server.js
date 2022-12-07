@@ -39,7 +39,7 @@ app.use('/creatures', creatureRouter);
 
 app.use('*', (req, res) => res.status(404).json({error: "Not Found"}));
 
-// Port Connection
+// Local Port Connection
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });

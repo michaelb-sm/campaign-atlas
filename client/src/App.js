@@ -16,6 +16,7 @@ function App() {
     const [entityData, setEntityData] = useState([]);
     const [creatureData, setCreatureData] = useState([]);
 
+    // First-time data fetching
     useEffect(() => {
         Axios.get('http://localhost:3001/people/')
             .then(response => setPersonData(response.data));
@@ -33,6 +34,7 @@ function App() {
             .then(response => setCreatureData(response.data));
     }, []);
 
+    // Sort all data into single array
     const allData = useMemo( () => {
         const data = [...personData, ...factionData, ...placeData, ...eventData, ...thingData, ...entityData, ...creatureData];
         data.sort((a, b) => {
@@ -60,6 +62,7 @@ function App() {
     }, [infoControl.page]);
 
     // Handle all main page user requests
+
     function handleHome() {
         setInfoControl({
             page: "main",
@@ -98,7 +101,7 @@ function App() {
         });
     }
 
-    // Entry Navigation and Data Handling 
+    // Navigation and Data Handling 
 
     function handleNewEntry(newName, newType) {
         let pageRoute = '';
@@ -122,6 +125,7 @@ function App() {
         Axios.post('http://localhost:3001/' + pageRoute + '/add', newEntry)
             .then(response => {
                 handleDataChange(pageRoute);
+                console.log(response);
                 handlePageChange(response.data._id, response.data.dataType)
             });
     }
@@ -217,6 +221,7 @@ function App() {
         </header>
         <div className="App-body">
         <InfoContainer 
+            // Left side of screen
             infoControl={infoControl}
             curData={curData}
             refData={allData}
@@ -225,7 +230,9 @@ function App() {
             onUpdate={handleUpdate}
             onDelete={handleDeletion}
         />
-        <ViewContainer />
+        <ViewContainer 
+            // Right side of screen
+        />
         </div>
     </div>
     );
