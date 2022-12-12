@@ -89,7 +89,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
         <div className='dataPage'>
             {/* Name and Status */}
             <h1> {data.name} </h1>
-            <div className='status'>
+            <div data-testid='status' className='status'>
                 <button className='blockButton' onClick={() => handleEdit('status')}>
                     {editKey === 'status' ? <SaveIcon fontSize='small' /> : <EditIcon fontSize='small'/>}
                 </button>
@@ -101,7 +101,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
             </div>
             <hr/>
             {/* Infolinks */}
-            <div className='infoLinks'>
+            <div data-testid='infoLinks' className='infoLinks'>
                 {Object.keys(data.infoLinks).map( (value) => {
                     return (
                         <Dropdown key={value} as={ButtonGroup}>
@@ -125,7 +125,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
             {/* Information Paragraphs */}
             {data.main.map( (value, index) => {
                 return (
-                    <div key={value._id ? value._id : index}>
+                    <div data-testid={'main' + String(index)} key={value._id ? value._id : index}>
                         <div className='heading'>
                             <button className='blockButton' onClick={() => handleEdit('main' + String(index))}>
                                 {editKey === 'main' + String(index) ? <SaveIcon fontSize='small' /> : <EditIcon fontSize='small'/>}
@@ -149,7 +149,7 @@ function DataPage({page, data, refData, onRedirect, onUpdate}) {
                     </div>
                 );
             })}
-            <button className='blockButton' onClick={() => handleNewParagraph()}><AddIcon /></button>
+            <button data-testid='addButton' className='blockButton' onClick={() => handleNewParagraph()}><AddIcon /></button>
         </div>
     )
 }
