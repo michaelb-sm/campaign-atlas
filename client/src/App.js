@@ -18,19 +18,19 @@ function App() {
 
     // First-time data fetching
     useEffect(() => {
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/people/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/people/')
             .then(response => setPersonData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/factions/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/factions/')
             .then(response => setFactionData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/places/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/places/')
             .then(response => setPlaceData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/events/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/events/')
             .then(response => setEventData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/things/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/things/')
             .then(response => setThingData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/entities/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/entities/')
             .then(response => setEntityData(response.data));
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/creatures/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/creatures/')
             .then(response => setCreatureData(response.data));
     }, []);
 
@@ -56,7 +56,7 @@ function App() {
 
     useEffect(() => {
         if (infoControl.page !== "main") {
-            Axios.get(process.env.REACT_APP_CLIENT_URL + '/' + infoControl.page)
+            Axios.get(process.env.REACT_APP_SERVER_URL + '/' + infoControl.page)
                 .then(response => setCurData(response.data));
         }
     }, [infoControl.page]);
@@ -122,7 +122,7 @@ function App() {
             main: []
         };
         console.log('Posting ' + newName + ' to ' + pageRoute);
-        Axios.post(process.env.REACT_APP_CLIENT_URL + '/' + pageRoute + '/add', newEntry)
+        Axios.post(process.env.REACT_APP_SERVER_URL + '/' + pageRoute + '/add', newEntry)
             .then(response => {
                 handleDataChange(pageRoute);
                 console.log(response);
@@ -152,16 +152,16 @@ function App() {
     }
 
     function handleUpdate(updatedData) {
-        Axios.post(process.env.REACT_APP_CLIENT_URL + '/' + infoControl.page + '/update', updatedData)
+        Axios.post(process.env.REACT_APP_SERVER_URL + '/' + infoControl.page + '/update', updatedData)
             .then(response => {
                 handleDataChange(infoControl.page.split('/')[0]);
-                Axios.get(process.env.REACT_APP_CLIENT_URL + '/' + infoControl.page)
+                Axios.get(process.env.REACT_APP_SERVER_URL + '/' + infoControl.page)
                     .then(response => setCurData(response.data));
             });
     }
 
     function handleDeletion() {
-        Axios.delete(process.env.REACT_APP_CLIENT_URL + '/' + infoControl.page)
+        Axios.delete(process.env.REACT_APP_SERVER_URL + '/' + infoControl.page)
             .then(response => {
                 handleDataChange(infoControl.page.split('/')[0]);
                 handleHome();
@@ -169,7 +169,7 @@ function App() {
     }
 
     function handleDataChange(route) {
-        Axios.get(process.env.REACT_APP_CLIENT_URL + '/' + route + '/')
+        Axios.get(process.env.REACT_APP_SERVER_URL + '/' + route + '/')
             .then(response => {
                 switch (route) {
                     case 'people':
